@@ -37,3 +37,14 @@ Python 3.10 이상을 권장합니다. 외부 API 키나 실서비스 계정이 
 - [전체 인턴 및 프로젝트 목록](https://github.com/Luriar/dinostudio-internship-portfolio)
 
 **주의:** 이 공개 코드는 기존 회사 프로젝트를 이전하거나 일부 수정하여 공개한 것이 아닙니다. 실제 업무 수행 내용은 설명하되 고객 데이터나 정량 성과를 공개하지 않습니다.
+
+## 확장된 ASF 오프라인 파이프라인
+
+`asf_engine.py`는 검증 가능한 가상 후보 데이터로 중복 처리, 분류, SQLite 저장과 변경 이력을 재현합니다. `run_pipeline.py`는 JSON 입력을 받아 후보 결과를 CSV로 내보내며, 같은 DB로 재실행해도 레코드가 중복되지 않습니다.
+
+```bash
+python run_pipeline.py --db synthetic_demo.sqlite --export candidate_export.csv
+python -m unittest discover -s tests -v
+```
+
+[설계 흐름과 범위](docs/PIPELINE.md). 후보 필터 조건은 실제 회사 정책이 아닌 공개용 예시입니다.
